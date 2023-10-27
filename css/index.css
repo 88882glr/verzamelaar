@@ -12,6 +12,7 @@ body {
 }
 
 navbar {
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -38,18 +39,46 @@ nav-right {
     min-height: 100%;
     max-width: 735px;
     width: 100%;
+    z-index: 10;
 }
 
-navbar a {
+navbar a,
+navbar i {
     font-size: 30px;
     color: #b0b0ba;
     padding: 0 30px 0 30px;
+    cursor: pointer;
 }
 
-navbar a :hover {
+navbar a :hover,
+navbar i:hover {
     font-size: 30px;
     color: #9281ea;
     transition: 0.3s;
+}
+
+#basket {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+count {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: -2px;
+    right: 13px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    font-size: 14px;
+    background-color: red;
+    color: #ffffff;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 main-box {
@@ -97,6 +126,7 @@ items {
     border-radius: 15px;
     background-color: #ffffff;
     transition: 0.1s;
+    z-index: 8;
 }
 
 items button {
@@ -253,10 +283,93 @@ extra-info {
 }
 
 winkelmand {
+    position: fixed;
     display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 350px;
+    padding-top: 70px;
+    top: 0;
+    right: 0;
+    background-color: white;
+    z-index: 9;
+}
+
+winkelmand-items {
+    height: 925px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+product {
+    position: relative;
+    display: flex;
+    height: 120px;
+}
+
+product:nth-child(odd) {
+    background-color: #f6f7fc;
+}
+
+.product-img {
     max-height: 100px;
     height: 100%;
-    max-width: 500px;
+    max-width: 100px;
     width: 100%;
-    background-color: white;
+    padding: 10px;
+}
+
+product-naam {
+    position: absolute;
+    top: 25px;
+    left: 120px;
+}
+
+product-prijs {
+    position: absolute;
+    top: 65px;
+    left: 120px;
+}
+
+product-count {
+    position: absolute;
+    top: 45px;
+    right: 40px;
+}
+
+totaal-prijs-box hr {
+    width: 250px;
+}
+
+totaal-prijs-box {
+    position: absolute;
+    bottom: 100px;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+totaal-prijs {
+    margin-left: 12px;
+}
+
+totaal-prijs-box button {
+    position: absolute;
+    right: 12px;
+    top: 5px;
+    height: 30px;
+    width: 60px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    color: white;
+    background-color: #6c55e1bd;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+totaal-prijs-box button:hover {
+    transform: scale(98%);
+    transition: 0.2s;
+    background-color: #624adbe4;
 }

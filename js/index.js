@@ -10,7 +10,7 @@ items.forEach(item => {
         const naam = item.querySelector("naam").innerHTML;
         const grootte = item.querySelector("grootte").innerHTML;
         const gewicht = item.querySelector("gewicht").innerHTML;
-        const prijs = item.querySelector("prijs").innerHTML;
+        const prijs = item.querySelector("prijs").textContent;
         const info = item.querySelector("info").innerHTML;
 
 
@@ -32,10 +32,6 @@ weg.addEventListener("click", () => {
     selectedItem.style.display = "none"
     mainBox.style.pointerEvents = "";
 });
-
-window.onload = function () {
-    updateTotalItemCount();
-};
 
 function getTotalItemCount() {
     cookieValue = document.cookie;
@@ -91,13 +87,62 @@ function addToCart() {
     console.log(cartList);
 
     updateTotalItemCount();
-}
+    location.reload();
+};
+
+function createProduct(i) {
+    const product = document.createElement("product");
+
+    const productImg = document.createElement("img");
+    productImg.classList.add("product-img");
+    productImg.src = `${cartList[i].img}`;
+
+    const productNaam = document.createElement("product-naam");
+    productNaam.innerHTML = cartList[i].naam;
+
+    let berekenPrijs = parseInt(cartList[i].prijs.replace('€ ', ''));
+
+    let totaalPrijs = berekenPrijs * parseInt(cartList[i].count);
+
+    const productPrijs = document.createElement("product-prijs");
+    productPrijs.innerHTML = "€ " + totaalPrijs + ",-";
+
+    const productCount = document.createElement("product-count");
+    productCount.innerHTML = cartList[i].count;
 
 
+    product.append(productImg, productNaam, productPrijs, productCount);
+    document.querySelector('winkelmand-items').append(product);
+};
+
+window.onload = function () {
+    updateTotalItemCount();
+    for (i = 0; i < cartList.length; i++) {
+        createProduct(i);
+    };
+    prijzenEls = document.querySelectorAll("product-prijs");
+
+    let totaalKosten = 0
+
+    for (let i = 0; i < prijzenEls.length; i++) {
+        totaalKosten += parseFloat(prijzenEls[i].innerHTML.replace('€ ', ''))
+    }
+    console.log(totaalKosten)
+    document.querySelector("totaal-prijs").innerHTML = "Totaal: € " + totaalKosten + ",-";
+};
+
+let zien = false;
+document.getElementById("basket").addEventListener("click", () => {
+    if (!zien) {
+        document.querySelector("winkelmand").style.display = "flex";
+        zien = true
+    } else if (zien) {
+        document.querySelector("winkelmand").style.display = "none";
+        zien = false
+    }
 
 
-
-
+})
 
 
 

@@ -21,15 +21,22 @@
                 <a href="./index.php" id="home"><i class="fa-solid fa-house"></i></a>
             </nav-left>
             <nav-right>
-                <a href="./basket.php" id="basket"><i class="fa-solid fa-basket-shopping">
-                        <count></count>
-                    </i></a>
+                <i id="basket" class="fa-solid fa-basket-shopping">
+                    <count></count>
+                </i>
                 <a href="./informatie.php" id="informatie"><i class="fa-solid fa-info"></i></a>
             </nav-right>
+            <winkelmand>
+                <winkelmand-items>
+                </winkelmand-items>
+                <totaal-prijs-box>
+                    <hr>
+                    <totaal-prijs></totaal-prijs>
+                    <button>Koop</button>
+                </totaal-prijs-box>
+            </winkelmand>
         </navbar>
-        <winkelmand>
 
-        </winkelmand>
         <main-box>
             <?php
             $db = new SQLite3(filename: "./db/db.db");
