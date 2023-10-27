@@ -172,6 +172,7 @@ selected-item {
     transform: translate(-50%, -50%);
     background-color: #f6f7fd;
     border-radius: 15px;
+    box-shadow: 0px 0px 300px 6000px rgba(0, 0, 0, 0.582);
 }
 
 #weg {
@@ -241,4 +242,21 @@ extra-info {
     color: #ffffff;
     font-size: 14px;
     gap: 10px;
+    cursor: pointer;
+    transition: 0.1s;
+}
+
+#add:hover {
+    transform: scale(99%);
+    filter: brightness(0.9);
+    transition: 0.2s;
+}
+
+winkelmand {
+    display: flex;
+    max-height: 100px;
+    height: 100%;
+    max-width: 500px;
+    width: 100%;
+    background-color: white;
 }
