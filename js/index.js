@@ -13,8 +13,6 @@ items.forEach(item => {
         const prijs = item.querySelector("prijs").textContent;
         const info = item.querySelector("info").innerHTML;
 
-
-
         selectedItem.style.display = "flex"
 
         document.getElementById("img").src = img;
@@ -84,8 +82,6 @@ function addToCart() {
 
     document.cookie = `cart=${JSON.stringify(cartList)};expires=${expire.toUTCString()}`;
 
-    console.log(cartList);
-
     updateTotalItemCount();
     location.reload();
 };
@@ -127,7 +123,6 @@ window.onload = function () {
     for (let i = 0; i < prijzenEls.length; i++) {
         totaalKosten += parseFloat(prijzenEls[i].innerHTML.replace('€ ', ''))
     }
-    console.log(totaalKosten)
     document.querySelector("totaal-prijs").innerHTML = "Totaal: € " + totaalKosten + ",-";
 };
 
@@ -140,10 +135,15 @@ document.getElementById("basket").addEventListener("click", () => {
         document.querySelector("winkelmand").style.display = "none";
         zien = false
     }
-
-
 })
 
+function oncartload() {
+    const queryString = window.location.search;
+    if (queryString == "?status=success") {
+        cartList = [];
+        document.cookie = `cart=[];expires=Thu, 01 Jan 1970 00:00:00 UTC;`;
+        document.location = "index.php";
+    }
+}
 
-
-
+oncartload();

@@ -284,7 +284,7 @@ extra-info {
 
 winkelmand {
     position: fixed;
-    display: flex;
+    display: none;
     flex-direction: column;
     height: 100vh;
     width: 350px;
@@ -352,7 +352,7 @@ totaal-prijs {
     margin-left: 12px;
 }
 
-totaal-prijs-box button {
+totaal-prijs-box form input {
     position: absolute;
     right: 12px;
     top: 5px;
@@ -372,4 +372,14 @@ totaal-prijs-box button:hover {
     transform: scale(98%);
     transition: 0.2s;
     background-color: #624adbe4;
+}
+
+informatie-tekst {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+    max-width: 700px;
+    background-color: white;
+    border-radius: 15px;
 }

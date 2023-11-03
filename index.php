@@ -19,6 +19,7 @@
         <navbar>
             <nav-left>
                 <a href="./index.php" id="home"><i class="fa-solid fa-house"></i></a>
+                <a href="./login.php"><i class="fa-solid fa-right-to-bracket"></i></a>
             </nav-left>
             <nav-right>
                 <i id="basket" class="fa-solid fa-basket-shopping">
@@ -32,7 +33,9 @@
                 <totaal-prijs-box>
                     <hr>
                     <totaal-prijs></totaal-prijs>
-                    <button>Koop</button>
+                    <form action="./db/db.php" method="post">
+                        <input type="submit" name="submitCookies" value="Bestel">
+                    </form>
                 </totaal-prijs-box>
             </winkelmand>
         </navbar>
